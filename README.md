@@ -5,6 +5,15 @@ Descripción
 
 Este proyecto consiste en el desarrollo de una API utilizando FastAPI, enfocada en la gestión de dispositivos tecnológicos. Su objetivo principal es permitir el control de un inventario de equipos como laptops, routers y otros dispositivos, facilitando el manejo de su información de forma sencilla.
 
+🛠️ Tecnologías utilizadas
+Python
+
+FastAPI
+
+Uvicorn
+
+Pydantic
+
 ### Endpoints de la API
 🏠 Ruta principal
 GET /
@@ -106,7 +115,17 @@ Método: GET
 
 ✔ Devuelve un diccionario con los resultados
 
-Funcionalidad
+### Ejecución
+
+uvicorn main:app --reload
+
+Abrir en navegador:
+
+http://127.0.0.1:8000
+
+http://127.0.0.1:8000/docs
+
+### Funcionalidad
 
 La API cuenta con varias funcionalidades que permiten gestionar completamente los dispositivos. En primer lugar, es posible registrar nuevos equipos mediante el endpoint POST /devices, donde se envía la información del dispositivo como su nombre, tipo, marca y estado.
 <img width="1240" height="572" alt="image" src="https://github.com/user-attachments/assets/b19f3eea-1b32-4348-942e-19d3f2fc04d6" />
