@@ -1,9 +1,110 @@
+# 🎓 Proyecto Maestría – UIDE
+## Parte 1 – Construcción del API
 API de Inventario Tecnológico
 Descripción
 
 Este proyecto consiste en el desarrollo de una API utilizando FastAPI, enfocada en la gestión de dispositivos tecnológicos. Su objetivo principal es permitir el control de un inventario de equipos como laptops, routers y otros dispositivos, facilitando el manejo de su información de forma sencilla.
 
-La API permite interactuar con los datos mediante diferentes endpoints, simulando el funcionamiento básico de un sistema de inventario.
+### Endpoints de la API
+🏠 Ruta principal
+GET /
+
+Devuelve un mensaje indicando que la API está activa.
+
+ Obtener todos los dispositivos
+ 
+GET /devices  
+
+Devuelve la lista completa de dispositivos.
+#### TIPO DE DATOS 
+<img width="328" height="204" alt="json_dispos" src="https://github.com/user-attachments/assets/8f527bd8-fe13-4add-88ec-8df549898936" />
+
+#### Endpoint: Ruta principal
+   
+@app.get("/")
+
+def home():
+
+    return {"message": "API Inventario activa"}
+    
+📌 Explicación
+
+Método: GET
+
+Ruta: /
+
+Devuelve un mensaje indicando que la API está activa.
+
+
+#### Endpoint: Ver dispositivos
+
+@app.get("/devices", response_model=List[Device])
+
+def get_devices():
+
+    return devices
+    
+📌 Explicación
+
+Método: GET
+
+Ruta: /devices
+
+Devuelve todos los dispositivos almacenados.
+
+Usa response_model para validar la respuesta.
+
+#### Endpoint: Agregar dispositivo
+<img width="574" height="201" alt="agregar_dispositivo" src="https://github.com/user-attachments/assets/14b302bd-ef5c-4238-9dfe-023ca5b26fb9" />
+
+📌 Explicación
+
+Método: POST
+
+Ruta: /devices
+
+Recibe un dispositivo en formato JSON, en la cual colocaremos cada uno de los dispositivos, con el formato de datos que se indico al inicio. 
+#### Endpoint: Actualizar estado
+<img width="592" height="181" alt="actualizacion_estado" src="https://github.com/user-attachments/assets/84587fea-c041-4fa0-8496-adb783d10e1b" />
+📌 Explicación
+
+Método: PUT
+
+Ruta: /devices/{device_id}
+
+Parámetros:
+
+device_id: ID del dispositivo
+
+status: nuevo estado
+
+✔ Busca el dispositivo
+
+✔ Si lo encuentra, actualiza el estado
+
+❌ Si no, devuelve error 404
+
+#### Endpoint: Eliminar dispositivo
+
+<img width="594" height="190" alt="eliminar" src="https://github.com/user-attachments/assets/1e5c2272-1886-418c-83ca-1517459a7556" />
+
+📌 Explicación
+Método: DELETE
+
+✔ Elimina el dispositivo si existe
+
+❌ Si no existe, devuelve error 404
+
+#### Endpoint: Conteo por tipo
+<img width="425" height="147" alt="conteo" src="https://github.com/user-attachments/assets/4eae6689-96f3-4611-b6d1-01c4ed7a331c" />
+
+📌 Explicación
+
+Método: GET
+
+✔ Cuenta cuántos dispositivos hay por tipo
+
+✔ Devuelve un diccionario con los resultados
 
 Funcionalidad
 
@@ -25,20 +126,4 @@ Como funcionalidad adicional, la API incluye el endpoint GET /devices/count, el 
 
 Finalmente, se cuenta con un endpoint básico GET / que permite verificar que la API se encuentra en funcionamiento.
 
-Tecnologías utilizadas
 
-El desarrollo fue realizado utilizando Python junto con FastAPI, un framework moderno para la creación de APIs. Para ejecutar el servidor se utilizó Uvicorn.
-
-Ejecución del proyecto
-
-Para ejecutar la API, primero se deben instalar las dependencias necesarias:
-
-pip install -r requirements.txt
-
-Luego, se inicia el servidor con el siguiente comando:
-
-uvicorn main --reload
-
-Una vez en ejecución, la API puede ser probada desde el navegador accediendo a:
-
-http://127.0.0.1:8000/docs
